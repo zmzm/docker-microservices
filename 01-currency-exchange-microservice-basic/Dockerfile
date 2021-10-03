@@ -3,7 +3,7 @@ ENV NODE_VERSION 16.10.0F
 
 WORKDIR /app
 COPY package.json /app
-RUN npm install
+RUN npm ci
 EXPOSE 5000
 COPY . /app
-ENTRYPOINT ["node", "index.js"]
+ENTRYPOINT ["node", "src/index.js"]
