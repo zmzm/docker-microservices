@@ -1,4 +1,4 @@
-# Currency Exchange Micro Service - H2
+# Currency Exchange microservice
 
 TBD
 
@@ -17,20 +17,22 @@ TBD
 ```
 
 ## Tables Created
-```
-create table exchange_value 
+
+### Currency table
+
+```sql
+create table currency
 (
-	id bigint not null, 
-	conversion_multiple decimal(19,2), 
-	currency_from varchar(255), 
-	currency_to varchar(255), 
-	primary key (id)
+  id bigint not null,
+  currencyType varchar(10),
+  primary key (id)
 )
 ```
 
-### Running Container
+## Running Container
 
-#### Basic
-```
+### Basic
+
+```text
 docker container run --publish 8000:8000 in28min/currency-exchange:0.0.1-SNAPSHOT
 ```

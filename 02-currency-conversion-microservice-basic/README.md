@@ -1,4 +1,5 @@
-# Currency Conversion Micro Service
+# Currency Conversion microservice
+
 TBD
 
 ## Resources
@@ -7,25 +8,19 @@ TBD
 
 ```json
 {
-  id: 10002,
-  from: "EUR",
-  to: "BYN",
-  conversionMultiple: 2.915,
-  quantity: 10,
-  totalCalculatedAmount: 29.15
+  "id": 10002,
+  "from": "EUR",
+  "to": "BYN",
+  "conversionMultiple": 2.915,
+  "quantity": 10,
+  "totalCalculatedAmount": 29.15
 }
 ```
 
-### Running Containers
+## Running Container
 
-```
+### Basic
+
+```text
 docker run --publish 8100:8100 --network currency-network --env CURRENCY_EXCHANGE_URI=http://currency-exchange:8000 @@@REPO_NAME@@@/currency-conversion:0.0.1-SNAPSHOT
-```
-
-#### Test API 
-- http://localhost:8100/currency-conversion/from/EUR/to/BYN/quantity/10
-
-```
-docker login
-docker push @@@REPO_NAME@@@/currency-conversion:0.0.1-SNAPSHOT
 ```

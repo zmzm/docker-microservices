@@ -1,9 +1,5 @@
 {
   "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
-  },
   "env": {
     "es6": true,
     "node": true,
@@ -46,6 +42,6 @@
     "no-useless-constructor": "error",
     "arrow-parens": 0,
     "import/prefer-default-export": 0,
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
   }
 }
