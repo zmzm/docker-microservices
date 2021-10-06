@@ -23,8 +23,21 @@ TBD
 ```sql
 create table currency
 (
-  id bigint not null,
-  currencyType varchar(10),
+  id BIGINT not null,
+  currencyType VARCHAR(10),
+  primary key (id)
+)
+```
+
+### Exchange table
+
+```sql
+create table currency
+(
+  id BIGINT not null,
+  from VARCHAR(10),
+  to VARCHAR(10)
+  conversionMultiple FLOAT
   primary key (id)
 )
 ```
