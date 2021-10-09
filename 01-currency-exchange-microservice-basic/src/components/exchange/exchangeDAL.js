@@ -1,7 +1,7 @@
-const Exchange = require('./exchange.js');
+const Exchange = require('../database/models/exchange');
 
 class ExchangeDAL {
-  async retrieveExchange(from, to) {
+  retrieveExchange = async (from, to) => {
     try {
       const exchange = await Exchange.findOne({
         where: { from, to },
@@ -11,7 +11,7 @@ class ExchangeDAL {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 }
 
 module.exports = ExchangeDAL;

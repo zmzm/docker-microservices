@@ -1,13 +1,15 @@
 const ExchangeDAL = require('./exchangeDAL');
 
-class ExchandeService {
-  exchangeDAL = new ExchangeDAL();
+class ExchangeService {
+  constructor() {
+    this.exchangeDAL = new ExchangeDAL();
+  }
 
-  async getExchange(from, to) {
+  getExchange = async (from, to) => {
     const exchange = this.exchangeDAL.retrieveExchange(from, to);
 
     return exchange;
-  }
+  };
 }
 
-module.exports = ExchandeService;
+module.exports = ExchangeService;
