@@ -4,6 +4,6 @@ const ExchangeController = require('./exchangeController');
 const exchangeRoute = express.Router();
 const exchangeController = new ExchangeController();
 
-exchangeRoute.get('/:from/:to', exchangeController.getExchange);
+exchangeRoute.get('from/:from/to/:to', exchangeController.getExchange);
 
 module.exports = exchangeRoute;

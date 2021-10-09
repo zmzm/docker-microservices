@@ -1,6 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
-const exchangeRoutes = require('./components/exchange/exchangeRoutes');
+const conversionRoutes = require('./components/conversion/conversionRoutes');
 const limiter = require('./rateLimit');
 
 const app = express();
@@ -8,7 +8,7 @@ const app = express();
 app.use(limiter);
 app.use(helmet());
 app.use(express.json());
-app.use('/api/currency-exchange', exchangeRoutes);
+app.use('/api/currency-conversion', conversionRoutes);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
