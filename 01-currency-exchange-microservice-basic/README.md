@@ -18,17 +18,6 @@ TBD
 
 ## Tables Created
 
-### Currency table
-
-```sql
-create table currency
-(
-  id BIGINT not null,
-  currencyType VARCHAR(10),
-  primary key (id)
-)
-```
-
 ### Exchange table
 
 ```sql
