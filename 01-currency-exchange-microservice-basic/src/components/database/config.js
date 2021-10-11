@@ -4,7 +4,7 @@ module.exports = {
     username: 'postgres',
     password: '',
     database: 'currency_exchange',
-    host: 'localhost',
+    host: 'host.docker.internal',
     port: '5432',
   },
 };

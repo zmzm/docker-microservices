@@ -4,7 +4,7 @@ TBD
 
 ## Resources
 
-- http://localhost:8000/currency-exchange/from/USD/to/BYN
+- http://localhost:3000/currency-exchange/from/USD/to/BYN
 
 ```json
 {
@@ -21,7 +21,7 @@ TBD
 ### Exchange table
 
 ```sql
-create table currency
+create table exchange
 (
   id BIGINT not null,
   from VARCHAR(10),
@@ -35,6 +35,20 @@ create table currency
 
 ### Basic
 
+#### Build image
+
 ```text
-docker container run --publish 8000:8000 in28min/currency-exchange:0.0.1-SNAPSHOT
+docker build -t vladjik00raskladjik/currency-exchange:0.0.1-RELEASE .
+```
+
+#### Push image to Docker Hub
+
+```text
+docker push vladjik00raskladjik/currency-exchange:0.0.1-RELEASE
+```
+
+#### Run container
+
+```text
+docker container run -d -p 3000:3000 --name=currency-exchange vladjik00raskladjik/currency-exchange:0.0.1-RELEASE
 ```

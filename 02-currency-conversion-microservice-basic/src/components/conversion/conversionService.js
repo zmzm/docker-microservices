@@ -1,9 +1,11 @@
 class ConversionService {
-  getConversion = async ({ from, to, quanity }) => {
-    const conversion = { from, to, quanity };
-
-    return conversion;
-  };
+  getConversion = async ({ from, to, quanity, conversionMultiple }) => ({
+    from,
+    to,
+    quanity,
+    conversionMultiple,
+    totalCalculatedAmount: quanity * conversionMultiple,
+  });
 }
 
 module.exports = ConversionService;

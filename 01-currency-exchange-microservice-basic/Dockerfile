@@ -1,9 +1,8 @@
-FROM alpine:3.11
-ENV NODE_VERSION 16.10.0F
+FROM node:16-alpine3.11
 
 WORKDIR /app
-COPY package.json /app
+COPY package*.json /app
 RUN npm ci
 EXPOSE 3000
 COPY . /app
-ENTRYPOINT ["node", "src/index.js"]
+ENTRYPOINT ["node", "/app/src/index.js"]
