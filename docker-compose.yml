@@ -14,7 +14,7 @@ services:
       - "3100:3100"
     restart: always
     environment:
-      CURRENCY_EXCHANGE_SERVICE_HOST: http://currency-exchange
+      CURRENCY_EXCHANGE_SERVICE_HOST: http://currency-exchange:3000
     depends_on:
       - currency-exchange
     networks:

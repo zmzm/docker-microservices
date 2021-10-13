@@ -4,7 +4,7 @@ TBD
 
 ## Resources
 
-- http://localhost:3000/currency-exchange/from/USD/to/BYN
+- http://localhost:3000/api/currency-exchange/from/USD/to/BYN
 
 ```json
 {

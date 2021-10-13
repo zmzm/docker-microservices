@@ -4,7 +4,7 @@ TBD
 
 ## Resources
 
-- http://localhost:3100/currency-conversion/from/EUR/to/BYN/quantity/10
+- http://localhost:3100/api/currency-conversion/from/EUR/to/BYN/quanity/10
 
 ```json
 {

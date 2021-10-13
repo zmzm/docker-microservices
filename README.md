@@ -26,7 +26,7 @@ Currency Conversion Service is used to convert a bucket of currencies.
 - **STEP 1** : Currency Conversion Service calls the Currency Exchange Service for the value of 1 USD. It gets a response back saying 2.495.
 - **STEP 2** : The Currency Conversion Service then multiplies 10 by 60, and returns 24.95 back.
 
-http://localhost:3100/currency-conversion/from/EUR/to/BYN/quantity/10
+http://localhost:3100/api/currency-conversion/from/EUR/to/BYN/quantity/10
 
 ```json
 {
@@ -43,4 +43,19 @@ http://localhost:3100/currency-conversion/from/EUR/to/BYN/quantity/10
 
 - You don't want to HARDCODE
 - Configure an Environment Variable - `CURRENCY_EXCHANGE_SERVICE_HOST`
-- --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange
+- --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange:3000
+
+## Run containers
+
+### Build containers without start
+
+```text
+docker-compose up --no-start
+```
+
+### Start/stop containers
+
+```text
+docker-compose start
+docker-compose stop
+```
