@@ -1,8 +1,18 @@
-FROM node:16-alpine3.11
+FROM node:16-alpine3.11 AS build
 
-WORKDIR /app
-COPY package*.json /app
+COPY package*.json ./
 RUN npm ci
-EXPOSE 3000
-COPY . /app
-ENTRYPOINT ["node", "/app/src/index.js"]
+COPY . .
+RUN npm run build
+
+FROM node:16-alpine3.11 AS production
+
+EXPOSE 3100
+
+COPY --from=build package*.json ./
+COPY --from=build node_modules ./node_modules
+COPY --from=build dist ./dist
+
+RUN npm prune --production
+
+ENTRYPOINT ["node", "dist/main.js"]

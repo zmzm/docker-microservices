@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   currency-exchange:
-    image: vladjik00raskladjik/currency-exchange:0.0.1-RELEASE
+    image: build -t vladjik00raskladjik/currency-exchange:0.0.1-RELEASE
     ports:
       - "3000:3000"
     restart: always
@@ -9,12 +9,10 @@ services:
       - currency-compose-network
 
   currency-conversion:
-    image: vladjik00raskladjik/currency-conversion:0.0.1-RELEASE
+    image: vladjik00raskladjik/currency-conversion:0.0.3-RELEASE
     ports:
       - "3100:3100"
     restart: always
-    environment:
-      CURRENCY_EXCHANGE_SERVICE_HOST: http://currency-exchange:3000
     depends_on:
       - currency-exchange
     networks:

@@ -3,6 +3,8 @@ const helmet = require('helmet');
 const conversionRoutes = require('./components/conversion/conversionRoutes');
 const limiter = require('./rateLimit');
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(limiter);
