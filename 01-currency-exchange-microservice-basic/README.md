@@ -37,8 +37,10 @@ create table exchange
 
 #### Build image
 
+#### The current build uses Macbook M1 chip with ARM architecture however GKE use linux/amd64
+
 ```text
-docker build -t vladjik00raskladjik/currency-exchange:0.0.1-RELEASE .
+docker build --platform linux/amd64 -t vladjik00raskladjik/currency-exchange:0.0.1-RELEASE .
 ```
 
 #### Push image to Docker Hub
