@@ -1,11 +1,13 @@
-const Exchange = require('../database/models/exchange');
+const Database = require('../database');
 
 class ExchangeDAL {
+  constructor() {
+    this.database = new Database();
+  }
+
   retrieveExchange = async (from, to) => {
     try {
-      const exchange = await Exchange.findOne({
-        where: { from, to },
-      });
+      const exchange = this.database.findExchangePair({ from, to });
 
       return exchange;
     } catch (error) {
