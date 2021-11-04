@@ -28,19 +28,36 @@ spec:
         app: currency-conversion
     spec:
       containers:
-      - image: vladjik00raskladjik/currency-conversion:0.0.4-RELEASE
+      - image: vladjik00raskladjik/currency-conversion:0.0.5-RELEASE
         imagePullPolicy: IfNotPresent
         name: currency-conversion
         env:
           - name: CURRENCY_EXCHANGE_SERVICE_HOST
             value: http//currency-exchange
+        ports:
+        - name: liveness-port
+          containerPort: 3100
         resources:
           requests:
-            memory: "512Mi"
+            memory: "128Mi"
             cpu: "100m"
           limits:
-            memory: "1024Mi"
+            memory: "512Mi"
             cpu: "500m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: liveness-port
+          failureThreshold: 5
+          periodSeconds: 10
+          initialDelaySeconds: 60
+        livenessProbe:
+          httpGet:
+            path: /
+            port: liveness-port
+          failureThreshold: 5
+          periodSeconds: 10
+          initialDelaySeconds: 60
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 ---
@@ -60,4 +77,4 @@ spec:
   selector:
     app: currency-conversion
   sessionAffinity: None
-  type: LoadBalancer
+  type: NodePort

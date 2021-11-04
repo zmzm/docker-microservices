@@ -10,6 +10,11 @@ const app = express();
 app.use(limiter);
 app.use(helmet());
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.status(200).json({ healthCheck: true });
+});
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.use('/api/currency-conversion', conversionRoutes);
 
 app.use((req, res, next) => {
