@@ -4,7 +4,7 @@ FROM node:14-alpine3.11 AS build
 COPY package*.json ./
 RUN npm ci
 COPY . .
-ENV CURRENCY_EXCHANGE_URI='http://currency-exchange:3000'
+ENV CURRENCY_EXCHANGE_SERVICE_HOST='http://currency-exchange:3000'
 RUN npm run build
 
 FROM node:14-alpine3.11 AS production

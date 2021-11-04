@@ -9,7 +9,7 @@ class ConversionController {
   getExchange = async (from, to) => {
     try {
       const response = await axios.get(
-        `${process.env.CURRENCY_EXCHANGE_URI}/api/currency-exchange/from/${from}/to/${to}`
+        `${process.env.CURRENCY_EXCHANGE_SERVICE_HOST}/api/currency-exchange/from/${from}/to/${to}`
       );
       return response.data;
     } catch (err) {

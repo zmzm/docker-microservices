@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: currency-exchange
-  name: currency-exchange
+    app: currency-conversion
+  name: currency-conversion
   namespace: default
 spec:
   # How many pods in deployment
@@ -12,7 +12,7 @@ spec:
   selector:
     matchLabels:
       # Map deployment with pods by this label
-      app: currency-exchange
+      app: currency-conversion
   # Update strategy
   strategy:
     rollingUpdate:
@@ -25,12 +25,15 @@ spec:
   template:
     metadata:
       labels:
-        app: currency-exchange
+        app: currency-conversion
     spec:
       containers:
-      - image: vladjik00raskladjik/currency-exchange:0.0.3-RELEASE
+      - image: vladjik00raskladjik/currency-conversion:0.0.4-RELEASE
         imagePullPolicy: IfNotPresent
-        name: currency-exchange
+        name: currency-conversion
+        env:
+          - name: CURRENCY_EXCHANGE_SERVICE_HOST
+            value: http//currency-exchange
         resources:
           requests:
             memory: "512Mi"
@@ -45,16 +48,16 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: currency-exchange
-  name: currency-exchange
+    app: currency-conversion
+  name: currency-conversion
   namespace: default
 spec:
   ports:
-  - port: 3000
+  - port: 3100
     protocol: TCP
-    targetPort: 3000
+    targetPort: 3100
   # Map service with pods by this label
   selector:
-    app: currency-exchange
+    app: currency-conversion
   sessionAffinity: None
   type: LoadBalancer

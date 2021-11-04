@@ -1,7 +1,7 @@
 const path = require('path');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const NodeExternals = require('webpack-node-externals');
-const DefinePlugin = require('webpack').DefinePlugin;
+const { DefinePlugin } = require('webpack');
 
 module.exports = {
   mode: 'production',
@@ -38,7 +38,9 @@ module.exports = {
   plugins: [
     new NodePolyfillPlugin(),
     new DefinePlugin({
-      'process.env.CURRENCY_EXCHANGE_URI': JSON.stringify(process.env.CURRENCY_EXCHANGE_URI)
-    })
+      'process.env.CURRENCY_EXCHANGE_SERVICE_HOST': JSON.stringify(
+        process.env.CURRENCY_EXCHANGE_SERVICE_HOST
+      ),
+    }),
   ],
 };

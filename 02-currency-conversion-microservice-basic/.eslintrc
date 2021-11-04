@@ -43,5 +43,11 @@
     "arrow-parens": 0,
     "import/prefer-default-export": 0,
     "no-param-reassign": 0
-  }
+  },
+  "overrides": [{
+    "files": ["webpack.config.js"],
+    "rules": {
+        "node/no-unpublished-require": "off"
+    }
+}]
 }
