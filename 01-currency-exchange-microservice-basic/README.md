@@ -1,56 +1,36 @@
 # Currency Exchange microservice
 
-TBD
+## Google kubernetes deploy
 
-## Resources
+---
 
-- http://localhost:3000/api/currency-exchange/from/USD/to/BYN
-
-```json
-{
-  "id": 10001,
-  "from": "USD",
-  "to": "BYN",
-  "conversionMultiple": 2.495,
-  "environmentInfo": "NA"
-}
-```
-
-## Tables Created
-
-### Exchange table
-
-```sql
-create table exchange
-(
-  id BIGINT not null,
-  from VARCHAR(10),
-  to VARCHAR(10)
-  conversionMultiple FLOAT
-  primary key (id)
-)
-```
-
-## Running Container
-
-### Basic
-
-#### Build image
-
-#### The current build uses Macbook M1 chip with ARM architecture however GKE use linux/amd64
+### Create deployment and expose service
 
 ```text
-docker build --platform linux/amd64 -t vladjik00raskladjik/currency-exchange:0.0.1-RELEASE .
+kubectl create deployment currency-exchange --image=vladjik00raskladjik/currency-exchange:0.0.1.RELEASE
+kubectl expose deployment currency-exchange --type=LoadBalancer --port=3000
 ```
 
-#### Push image to Docker Hub
+### Set new image
 
 ```text
-docker push vladjik00raskladjik/currency-exchange:0.0.1-RELEASE
+kubectl set image deployment currency-exchange currency-exchange=vladjik00raskladjik/currency-exchange:0.0.2.RELEASE
 ```
 
-#### Run container
+### Delete all resources connected with application
 
 ```text
-docker container run -d -p 3000:3000 --name=currency-exchange vladjik00raskladjik/currency-exchange:0.0.1-RELEASE
+kubectl delete all -l app=currency-exchange
+```
+
+### Everything can be specified using a particular [deployment.yml](deployment.yml) file, which can then be used
+
+```text
+kubectl apply -f deployment.yml
+```
+
+### Using [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+
+```text
+kubectl apply -f ingress.yml
 ```
